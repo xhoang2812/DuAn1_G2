@@ -91,6 +91,8 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jLabel4.setText("Password : ");
 
+        txt_pass.setText("duc123");
+
         jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jCheckBox1.setText("Nhớ mật khẩu");
 

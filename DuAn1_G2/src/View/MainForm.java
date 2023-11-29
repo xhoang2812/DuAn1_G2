@@ -78,7 +78,7 @@ public class MainForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
         jLabel2.setText("JushTea");
 
-        pnlTrangChu.setBackground(new java.awt.Color(246, 185, 59));
+        pnlTrangChu.setBackground(new java.awt.Color(204, 204, 255));
 
         lblTrangChu.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblTrangChu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -100,6 +100,7 @@ public class MainForm extends javax.swing.JFrame {
 
         pnlHoaDon.setBackground(new java.awt.Color(246, 185, 59));
 
+        lblHoaDon.setBackground(new java.awt.Color(204, 204, 255));
         lblHoaDon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHoaDon.setText("HÓA ĐƠN ");
@@ -207,7 +208,7 @@ public class MainForm extends javax.swing.JFrame {
         pnlView.setLayout(pnlViewLayout);
         pnlViewLayout.setHorizontalGroup(
             pnlViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 849, Short.MAX_VALUE)
+            .addGap(0, 826, Short.MAX_VALUE)
         );
         pnlViewLayout.setVerticalGroup(
             pnlViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +236,7 @@ public class MainForm extends javax.swing.JFrame {
                                     .addComponent(jLabel1)))
                             .addComponent(pnlSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(29, 29, 29)
                 .addComponent(pnlView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
