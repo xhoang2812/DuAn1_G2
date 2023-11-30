@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-public class nhanVien_Service implements DAO<nhanVien, Integer> {
+public class nhanVien_Service implements DAO<nhanVien, String> {
 
     @Override
     public List<nhanVien> getAll() {
@@ -53,20 +53,22 @@ public class nhanVien_Service implements DAO<nhanVien, Integer> {
     public Integer add(nhanVien tt) {
         Integer row = null;
         try {
-            String sql = "insert into NhanVien(MaNhanVien, HoTen,NgaySinh, CCCD, GioiTinh, DiaChi, Email, SoDienThoai, TrangThai, VaiTro)\n"
-                    + "			values(?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into nhanVien(MaNhanVien, HoTen, NgaySinh, DiaChi,CCCD, GioiTinh, TrangThai, Email, SoDienThoai, TenDangNhap, MatKhau, VaiTro)\n"
+                    + "			values(?,?,?,?,?,?,?,?,?,?,?,?)";
             Connection cn = DBConnect.getConnection();
             PreparedStatement pms = cn.prepareStatement(sql);
             pms.setObject(1, tt.getMaNV());
             pms.setObject(2, tt.getHoTen());
             pms.setObject(3, (Date) tt.getNgaySinh());
-            pms.setObject(4, tt.getCCCD());
-            pms.setObject(5, tt.isGioiTinh());
-            pms.setObject(6, tt.getDiaChi());
-            pms.setObject(7, tt.getEmail());
-            pms.setObject(8, tt.getSdt());
-            pms.setObject(9, tt.isTrangThai());
-            pms.setObject(10, tt.isVaiTro());
+            pms.setObject(4, tt.getDiaChi());
+            pms.setObject(5, tt.getCCCD());
+            pms.setObject(6, tt.isGioiTinh());
+            pms.setObject(7, tt.isTrangThai());
+            pms.setObject(8, tt.getEmail());
+            pms.setObject(9, tt.getSdt());
+            pms.setObject(10, tt.getTenDangNhap());
+            pms.setObject(11, tt.getMatKhau());
+            pms.setObject(12, tt.isVaiTro());
             row = pms.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
@@ -79,21 +81,23 @@ public class nhanVien_Service implements DAO<nhanVien, Integer> {
         Integer row = null;
         try {
             String sql = "update NhanVien\n"
-                    + "set MaNhanVien = ?, HoTen= ?,NgaySinh = ?, CCCD= ?, GioiTinh= ?, DiaChi= ?, Email= ? , SoDienThoai= ?, TrangThai= ?, VaiTro= ?\n"
+                    + "set MaNhanVien = ?, HoTen = ?,  NgaySinh = ?, DiaChi = ?, CCCD = ?, GioiTinh = ?, TrangThai =?, Email = ?, SoDienThoai = ?, TenDangNhap = ?, MatKhau = ?, VaiTro = ?\n"
                     + "where id_NhanVien like ?";
             Connection cn = DBConnect.getConnection();
             PreparedStatement pms = cn.prepareStatement(sql);
             pms.setObject(1, tt.getMaNV());
             pms.setObject(2, tt.getHoTen());
             pms.setObject(3, (Date) tt.getNgaySinh());
-            pms.setObject(4, tt.getCCCD());
-            pms.setObject(5, tt.isGioiTinh());
-            pms.setObject(6, tt.getDiaChi());
-            pms.setObject(7, tt.getEmail());
-            pms.setObject(8, tt.getSdt());
-            pms.setObject(9, tt.isTrangThai());
-            pms.setObject(10, tt.isVaiTro());
-            pms.setObject(11, tt.getId_NhanVien());
+            pms.setObject(4, tt.getDiaChi());
+            pms.setObject(5, tt.getCCCD());
+            pms.setObject(6, tt.isGioiTinh());
+            pms.setObject(7, tt.isTrangThai());
+            pms.setObject(8, tt.getEmail());
+            pms.setObject(9, tt.getSdt());
+            pms.setObject(10, tt.getTenDangNhap());
+            pms.setObject(11, tt.getMatKhau());
+            pms.setObject(12, tt.isVaiTro());
+            pms.setObject(13, tt.getId_NhanVien());
             row = pms.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
@@ -102,14 +106,14 @@ public class nhanVien_Service implements DAO<nhanVien, Integer> {
     }
 
     @Override
-    public Integer xoa(Integer id) {
+    public Integer xoa(String ma) {
         Integer row = null;
         try {
             String sql = "delete NhanVien\n"
-                    + "where id_NhanVien like ?";
+                    + "where MaNhanVien like ?";
             Connection cn = DBConnect.getConnection();
             PreparedStatement pms = cn.prepareStatement(sql);
-            pms.setInt(1, id);
+            pms.setString(1, ma);
             row = pms.executeUpdate();
         } catch (Exception e) {
             System.out.println("Lối xóa service");
@@ -118,14 +122,14 @@ public class nhanVien_Service implements DAO<nhanVien, Integer> {
     }
 
     @Override
-    public List<nhanVien> timKemTheoID(Integer id) {
+    public List<nhanVien> timKemTheoID(String ma) {
         ArrayList<nhanVien> listTK = new ArrayList<>();
         try {
             String sql = "select * from NhanVien\n"
-                    + "where id_NhanVien like ?";
+                    + "where MaNhanVien like ?";
             Connection cn = DBConnect.getConnection();
             PreparedStatement pms = cn.prepareStatement(sql);
-            pms.setInt(1, id);
+            pms.setString(1, ma);
             ResultSet rs = pms.executeQuery();
             while (rs.next()) {
                 nhanVien n = new nhanVien();
@@ -140,6 +144,8 @@ public class nhanVien_Service implements DAO<nhanVien, Integer> {
                 n.setEmail(rs.getString(9));
                 n.setSdt(rs.getString(10));
                 n.setImageNV(rs.getString(11));
+                n.setTenDangNhap(rs.getString(12));
+                n.setMatKhau(rs.getString(13));
                 n.setVaiTro(rs.getBoolean(14));
                 listTK.add(n);
             }
@@ -149,9 +155,8 @@ public class nhanVien_Service implements DAO<nhanVien, Integer> {
         return listTK;
     }
 
-  
     public nhanVien selected_by_ma(String ma) {
-        
+
         try {
             String sql = "select * from NhanVien\n"
                     + "where tenDangNhap like ?";
