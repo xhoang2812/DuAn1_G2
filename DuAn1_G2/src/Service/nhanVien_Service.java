@@ -38,6 +38,8 @@ public class nhanVien_Service implements DAO<nhanVien, Integer> {
                 n.setEmail(rs.getString(9));
                 n.setSdt(rs.getString(10));
                 n.setImageNV(rs.getString(11));
+                n.setTenDangNhap(rs.getString(12));
+                n.setMatKhau(rs.getString(13));
                 n.setVaiTro(rs.getBoolean(14));
                 list.add(n);
             }

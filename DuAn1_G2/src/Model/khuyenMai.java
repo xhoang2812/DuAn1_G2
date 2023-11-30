@@ -14,15 +14,15 @@ public class khuyenMai {
 
     private int id_khuyenMaiSanPham;
     private String maKM;
-    private double tiemGiam;
+    private int tiemGiam;
     private Date ngayBatDau;
     private Date ngayKetThuc;
-    private int trangThai;
+    private boolean trangThai;
 
     public khuyenMai() {
     }
 
-    public khuyenMai(int id_khuyenMaiSanPham, String maKM, double tiemGiam,  Date ngayBatDau, Date ngayKetThuc, int trangThai) {
+    public khuyenMai(int id_khuyenMaiSanPham, String maKM, int tiemGiam, Date ngayBatDau, Date ngayKetThuc, boolean trangThai) {
         this.id_khuyenMaiSanPham = id_khuyenMaiSanPham;
         this.maKM = maKM;
         this.tiemGiam = tiemGiam;
@@ -47,11 +47,11 @@ public class khuyenMai {
         this.maKM = maKM;
     }
 
-    public double getTiemGiam() {
+    public int getTiemGiam() {
         return tiemGiam;
     }
 
-    public void setTiemGiam(double tiemGiam) {
+    public void setTiemGiam(int tiemGiam) {
         this.tiemGiam = tiemGiam;
     }
 
@@ -71,12 +71,14 @@ public class khuyenMai {
         this.ngayKetThuc = ngayKetThuc;
     }
 
-    public int getTrangThai() {
+    public boolean isTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(int trangThai) {
+    public void setTrangThai(boolean trangThai) {
         this.trangThai = trangThai;
     }
 
+  
+    
 }
