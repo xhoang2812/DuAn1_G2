@@ -18,6 +18,7 @@ import View.TrangChu_Panel;
 import View.Voucher_Panel;
 import View.SanPham_Panel;
 import View.ThongKe_JDialog;
+import View.ThongKe_Panel;
 
 
 
@@ -81,6 +82,9 @@ public class ChuyenManHinh {
                     break; 
                 case "HoaDon":
                     node = new HoaDon_Panel();
+                    break;
+                case "ThongKe":
+                    node = new ThongKe_Panel();
                     break;
                 default:
                     node = new TrangChu_Panel();
